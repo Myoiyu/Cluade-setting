@@ -11,7 +11,7 @@
 cp -r ~/.claude ~/.claude.bak
 
 # 克隆仓库
-git clone https://github.com/<your-username>/<repo-name>.git ~/.claude
+git clone https://github.com/Myoiyu/Cluade-setting.git ~/.claude
 ```
 
 ### 更新配置
@@ -45,9 +45,7 @@ git push origin main
 │   └── report-style.md         # 报告与文档输出规则
 └── skills/            # 自定义技能
     ├── git-push/      # 自动 git commit & push
-    ├── str-debug/     # Android STR 待机日志分析
-    ├── update-arch-doc/  # 自动更新架构文档
-    └── ppt-generator/ # PPT 生成器
+    └── str-debug/     # Android STR 待机日志分析
 ```
 
 ## 注意事项
