@@ -45,7 +45,8 @@ git push origin main
 │   └── report-style.md         # 报告与文档输出规则
 └── skills/            # 自定义技能
     ├── git-push/      # 自动 git commit & push
-    └── str-debug/     # Android STR 待机日志分析
+    ├── str-debug/     # Android STR 待机日志分析
+    └── jira-analyze/  # Jira 问题单分析与解决
 ```
 
 ## 注意事项
