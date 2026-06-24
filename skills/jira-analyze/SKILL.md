@@ -106,7 +106,34 @@ curl -s --noproxy '*' -H "Authorization: Bearer <JIRA_PAT>" -o "/e/日志/jira_a
 
 下载完成后确认文件大小与 Jira 返回一致。
 
-### Step 7：日志类型判断与分析
+### Step 7：解压压缩包
+
+下载完成后，检查所有日志文件（Jira 附件 + Samba 日志），按扩展名判断是否需要解压：
+
+| 扩展名 | 工具 | 解压命令 |
+|--------|------|----------|
+| .zip | unzip | `unzip -o "<文件>" -d "<输出目录>"` |
+| .7z | Bandizip | `"/c/Program Files/Bandizip/bz.exe" x -o:"<输出目录>" "<文件>"` |
+| .rar | Bandizip | `"/c/Program Files/Bandizip/bz.exe" x -o:"<输出目录>" "<文件>"` |
+| .gz / .tgz | tar | `tar -xzf "<文件>" -C "<输出目录>"` |
+| .tar | tar | `tar -xf "<文件>" -C "<输出目录>"` |
+
+**解压流程**：
+
+```bash
+# 对每个压缩包创建独立解压目录
+mkdir -p "/e/日志/jira_attachments/<单号>/extracted/<压缩包名去掉扩展名>/"
+
+# .7z 文件使用 Bandizip
+"/c/Program Files/Bandizip/bz.exe" x -o:"/e/日志/jira_attachments/<单号>/extracted/<目录名>/" "/e/日志/jira_attachments/<单号>/<压缩包>"
+
+# .zip 文件使用 unzip
+unzip -o "/e/日志/jira_attachments/<单号>/<压缩包>" -d "/e/日志/jira_attachments/<单号>/extracted/<目录名>/"
+```
+
+**注意**：如果 Bandizip 不可用，尝试用 PowerShell 自带的 `Expand-Archive`（仅支持 .zip）或告知用户手动解压。
+
+### Step 8：日志类型判断与分析
 
 **日志来源**：
 1. Jira 附件（`/e/日志/jira_attachments/<单号>/`）
@@ -133,7 +160,7 @@ curl -s --noproxy '*' -H "Authorization: Bearer <JIRA_PAT>" -o "/e/日志/jira_a
 3. 按 `str-debug` skill 的四维分析框架输出结论（待机异常 / 黑屏异常 / 开机异常 / STR 流程完整性）
 4. 若有 Java/NE 崩溃，搜索 `FATAL EXCEPTION`、`signal`、`backtrace`
 
-### Step 8：综合输出分析报告
+### Step 9：综合输出分析报告
 
 结合问题单信息和日志分析结果，输出结构化报告：
 
