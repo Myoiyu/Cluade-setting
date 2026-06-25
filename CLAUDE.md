@@ -17,6 +17,7 @@
 - `~/.claude/rules/coding.md`
 - `~/.claude/rules/code-change-command.md`
 - `~/.claude/rules/language.md`
+- `~/.claude/rules/dingtalk.md`
 
 ## 报告与文档输出
 
