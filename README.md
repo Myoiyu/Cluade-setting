@@ -42,7 +42,8 @@ git push origin main
 │   ├── session-memory.md       # 跨会话记忆规则
 │   ├── large-log-analysis.md   # 大日志分析规则
 │   ├── question-ask.md         # Android 调试规则
-│   └── report-style.md         # 报告与文档输出规则
+│   ├── report-style.md         # 报告与文档输出规则
+│   └── dingtalk.md             # 钉钉通知规则
 └── skills/            # 自定义技能
     ├── git-push/      # 自动 git commit & push
     ├── str-debug/     # Android STR 待机日志分析
